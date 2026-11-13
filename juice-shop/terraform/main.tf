@@ -106,7 +106,7 @@ resource "aws_ecs_service" "juice_shop" {
   network_configuration {
     subnets          = aws_subnet.public[*].id
     security_groups  = [aws_security_group.ecs.id]
-    assign_public_ip = true
+    assign_public_ip = false  # FIX CWE-200: ECS tasks should not have public IPs
   }
 
   load_balancer {
